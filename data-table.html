@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veri Tablosu</title>
+</head>
+<body>
+  <h1>Veri Tablosu</h1>
+  <table id="myTable" border="1">
+    <tr>
+      <th>Sicil No</th>
+      <th>Tarih</th>
+      <th>Vardiya</th>
+      <th>Hat</th>
+      <th>Dummy No</th>
+      <th>Jig No</th>
+      <th>Hata Kodu</th>
+      <th>Değişen Parça</th>
+      <th>Parça Adedi</th>
+      <th>Açıklama</th>
+    </tr>
+    <tr>
+      <td>12345</td><td>2025-08-02</td><td>1</td><td>A</td><td>D001</td><td>J001</td><td>H01</td><td>Parça X</td><td>1</td><td>Test</td>
+    </tr>
+    <tr>
+      <td>67890</td><td>2025-08-01</td><td>2</td><td>B</td><td>D002</td><td>J002</td><td>H02</td><td>Parça Y</td><td>2</td><td>Deneme</td>
+    </tr>
+  </table>
+
+  <script>
+    const table = document.getElementById("myTable");
+    const rows = table.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+      if (i === 0) continue;
+      const cells = rows[i].getElementsByTagName("td");
+      const data = {
+        sicil_no: cells[0].innerText,
+        tarih: cells[1].innerText,
+        vardiya: cells[2].innerText,
+        hat: cells[3].innerText,
+        dummy_no: cells[4].innerText,
+        jig_no: cells[5].innerText,
+        hata_kodu: cells[6].innerText,
+        degisen_parca: cells[7].innerText,
+        parca_adedi: parseInt(cells[8].innerText),
+        aciklama: cells[9].innerText
+      };
+
+      fetch("/.netlify/functions/save-data", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(response => response.json())
+        .then(result => console.log(result.message))
+        .catch(error => console.error("Hata:", error));
+    }
+  </script>
+</body>
+</html>
