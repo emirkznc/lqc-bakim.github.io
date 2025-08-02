@@ -1,0 +1,23 @@
+{
+  "name": "lqc-bakim.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emirkznc/lqc-bakim.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emirkznc/lqc-bakim.github.io/issues"
+  },
+  "homepage": "https://github.com/emirkznc/lqc-bakim.github.io#readme",
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}
